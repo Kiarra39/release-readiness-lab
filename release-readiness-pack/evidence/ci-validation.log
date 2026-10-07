@@ -1,0 +1,18 @@
+CI workflow declared in .github/workflows/ci.yml
+
+name: CI Pipeline
+jobs:
+  validate:
+    steps:
+      - Checkout Code
+      - Set up Python 3.11
+      - Install dependencies
+      - Run lint (Syntax Check)
+        python -m py_compile app/app.py app/test_app.py
+      - Run unit tests
+        pytest app/test_app.py
+      - Set up Docker Buildx
+      - Build Docker Image (Dry Run)
+        docker/build-push-action@v5
+
+This repository does not contain the output artifact from a real GitHub Actions run in the workspace, so the static workflow definition plus the local equivalent test execution are the available validation evidence.
