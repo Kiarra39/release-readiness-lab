@@ -4,7 +4,9 @@ metadata:
   name: checkout-api-config
   namespace: checkout-system
 data:
+  APP_ENV: "production"
   LOG_LEVEL: "info"
   PORT: "5000"
-  # Note: Developers forgot to include DATABASE_URL and REDIS_URL here.
-  # This causes the application to default to volatile, in-memory SQLite and local cache.
+  DATABASE_URL: "postgresql://checkout-prod:change-me@prod-db.internal:5432/checkout"
+  REDIS_URL: "redis://redis.internal:6379/0"
+  # Values above are placeholders for deployment validation; production secrets should be supplied by an external secret manager.
